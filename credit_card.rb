@@ -20,7 +20,7 @@ class CreditCard
   end
 
   # returns json string
-  def to_json(*_args)
+  def to_json(*args)
     {
       # TODO: setup the hash with all instance vairables to serialize into json
       'credit_card' => {
@@ -29,7 +29,7 @@ class CreditCard
         'owner' => owner,
         'credit_network' => credit_network
       }
-    }.to_json(*_args)
+    }.to_json(*args)
   end
 
   # returns all card information as single string
@@ -41,7 +41,8 @@ class CreditCard
   def self.from_s(card_s)
     # TODO: deserializing a CreditCard object
     json_object = JSON.parse(card_s)
-    CreditCard.new(json_object['number'], json_object['expiration_date'], json_object['owner'], json_object['credit_network'])
+    CreditCard.new(json_object['number'], json_object['expiration_date'], json_object['owner'],
+                   json_object['credit_network'])
   end
 
   # return a hash of the serialized credit card object
